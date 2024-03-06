@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Book>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>@Html.DisplayNameFor(model=>model.Author)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>
+                    <a asp-action="Detail" asp-route-id="@book.Id">@book.Title</a>
+                </td>
+                <td>@book.Author </td>
+                <td> <a asp-action="Delete" asp-route-id="@book.Id" onclick="return confirm('Are you sure you want to delete it?')"> Delete </a> | Update </td>
+            </tr>
+        }
+        
+    </tbody>
+    <thead>
+
+        <tr>
+            <th>
+                <a href="https://localhost:7244/Books/Create">Add Book</a>
+            </th>
+        </tr>
+
+    </thead>
+
+</table>
